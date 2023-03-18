@@ -27,8 +27,6 @@ goto :eof
     if Not Defined Name goto :eof
     echo Detected network name is: %NetConnectionID%
     echo.
-    ::netsh interface ip set dns name="%NetConnectionID%" static 1.1.1.1
-    ::netsh interface ip add dns name="%NetConnectionID%" 4.2.2.4 index=2
     goto :readfile
 
 :readfile
@@ -63,21 +61,34 @@ goto :eof
     set "commands=!commands!!index!"
     call echo   !index!. %%Names[%%i]%%
     )
-    echo   0. clear DNS
+    echo   0. clear DNS (WIP)
     echo.
     set "commands=0%commands%"
 
     choice /c:%commands% /M "Please choose an action: "
     echo.
 
-    ::if %errorlevel%==1 goto :take-action
-    ::if %errorlevel%==2 goto :take-action
-    ::if %errorlevel%==3 goto :take-action
+    if %errorlevel%==1 goto :clear-dns
+    set /a dnsindex=%errorlevel% - 2
+    goto set-dns
 
-    ::if %errorlevel%==4 goto eof
+:set-dns
+    ::setlocal enabledelayedexpansion
+    call echo Setting DNS for %%Names[%dnsindex%]%% ...
+    call set dns1=%%Servers1[%dnsindex%]%%
+    call set dns2=%%Servers2[%dnsindex%]%%
+    echo Setting Preferred DNS Server (%dns1%)
+    echo Setting Alternate DNS Server (%dns2%)
+    netsh interface ip set dns name="%NetConnectionID%" static %dns1%
+    netsh interface ip add dns name="%NetConnectionID%" %dns2% index=2
+    echo Done.
+    pause
+    goto :eof
 
-:take-action
-    echo take-action
+:clear-dns
+    echo clear-dns
+    pause
+    goto :eof
 
 pause
 goto :eof
