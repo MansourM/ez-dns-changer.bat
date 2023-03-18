@@ -1,7 +1,12 @@
-:: get admin access (you need admin access to set dns)
 @echo off
+
+:: Customize Window
+title DNS Changer
+
+:: go to payload if we already got admin
 if _%1_==_payload_  goto :payload
 
+:: get admin access (you need admin access to set dns), here we call this batch file again with admin privileges
 :getadmin
     echo %~nx0: elevating self
     set vbs=%temp%\getadmin.vbs
@@ -13,12 +18,13 @@ goto :eof
 
 :: main code
 :payload
-    netsh interface ip set dns name="Main Ethernet" static 1.1.1.1
-    netsh interface ip add dns name="Main Ethernet" 1.0.0.1 index=2
-echo ...
-echo ...
-echo PLEASE CHECK ABOVE IF SHARE WAS SUCCESFUL. YOU MAY NOW CLOSE THE WINDOW(S)
-echo ...
-echo ...
+    ::set NetConnectionID (network name)
+    SetLocal EnableExtensions
+    Set "Name=" & Set "NetConnectionID="
+    For /F Delims^= %%G In ('%__APPDIR__%wbem\WMIC.exe NIC Where ^
+     "Not NetConnectionStatus Is Null And NetEnabled='TRUE'" ^
+     Get Name^,NetConnectionID /Value 2^> NUL') Do Set "%%G" 2> NUL 1>&2
+    if Not Defined Name goto :eof
+
 pause
 goto :eof
