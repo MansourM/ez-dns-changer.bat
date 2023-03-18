@@ -31,17 +31,23 @@ goto :eof
     goto :readfile
 
 :readfile
-    set "x = 0"
+    ::endlocal
+    set /a x = 0
+    setlocal enabledelayedexpansion
     for /f "tokens=1-3 delims=," %%i in (%2dns-servers.txt) do (
-     set Names[%x%]=%%i
-     ::call echo name=%%Names[%x%]%%
-     set Server1[%x%]=%%j
-     ::call echo Server1=%%Server1[%x%]%%
-     set Server2[%x%]=%%k
-     ::call echo Server2=%%Server2[%x%]%%
-     set /a "x+=1"
+     ::call echo !x!
+     set Names[!x!]=%%i
+     ::call echo Name=%%Names[!x!]%%
+     set Servers1[!x!]=%%j
+     ::call echo Server1=%%Servers1[!x!]%%
+     set Servers2[!x!]=%%k
+     ::call echo Server2=%%Servers2[!x!]%%
+     set /a x+=1
     )
+    goto :showmenuw
 
+:showmenuw
+bugfix
 
 pause
 goto :eof
