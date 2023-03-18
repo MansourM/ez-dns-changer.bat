@@ -20,13 +20,13 @@
 
 ## :compass: TODO / Roadmap
 
-* [ ] 0. change dns with bat file
-* [ ] 1. read dns servers from a config file
-* [ ] 2. radar.game
-* [ ] 3. 403.online
-* [ ] 4. shecan.ir
-* [ ] 5. google
-* [ ] 6. cloudflare
+* [x] 0. change dns with bat file
+* [x] 1. read dns servers from a config file
+* [x] 2. radar.game
+* [x] 3. 403.online
+* [x] 4. shecan.ir
+* [x] 5. google
+* [x] 6. cloudflare
 * [ ] 6. clear dns
 
 
