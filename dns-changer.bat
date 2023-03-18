@@ -70,11 +70,11 @@ goto :eof
     choice /c:%commands% /M "Please choose an action: "
     echo.
 
-    if %errorlevel%==1 goto :take-action
-    if %errorlevel%==2 goto :take-action
-    if %errorlevel%==3 goto :take-action
+    ::if %errorlevel%==1 goto :take-action
+    ::if %errorlevel%==2 goto :take-action
+    ::if %errorlevel%==3 goto :take-action
 
-    if %errorlevel%==4 goto eof
+    ::if %errorlevel%==4 goto eof
 
 :take-action
     echo take-action
