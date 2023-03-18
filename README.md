@@ -1,6 +1,6 @@
 <div align="center">
 <!--<img src="image/persian-dictionary.png" alt="logo" width="450" height="150" />-->
-  <h1>EZ DNS Changer</h1>-->
+  <h1>EZ DNS Changer</h1>
   <p>تغییر دی ان اس آسان</p>
 </div>
 
@@ -14,18 +14,20 @@
 
 از سویی یافتن و تغییر دستی این موضوع به راحتی امکان پذیر نبوده و از سوی دیگر استفاده از نرم افزار های معرفی شده به دلیل متن بسته بودن و شایعات حواشی آنها مورد استقبال تمامی کاربران قرار نگرفته است.
 
-**هدف این ریپو تهیه یک فایل ساده و کاملا شفاف برای تغییر دی ان اس میباشد **
+**هدف این ریپو تهیه یک فایل ساده و کاملا شفاف برای تغییر دی ان اس میباشد**
 
 <!-- Roadmap -->
 
 ## :compass: TODO / Roadmap
 
-* [ ] 0. clear dns
-* [ ] 1. shecan.ir
+* [ ] 0. change dns with bat file
+* [ ] 1. read dns servers from a config file
 * [ ] 2. radar.game
 * [ ] 3. 403.online
-* [ ] 4. google
-* [ ] 5. cloudflare
+* [ ] 4. shecan.ir
+* [ ] 5. google
+* [ ] 6. cloudflare
+* [ ] 6. clear dns
 
 
 <!-- Known Issues -->
