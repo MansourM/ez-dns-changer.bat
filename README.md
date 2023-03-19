@@ -1,6 +1,6 @@
 <div align="center">
 <img src="ez-dns-changer.png" alt="logo" width="450" height="150" />
-  <h1>EZ DNS Changer</h1>
+  <h3>EZ DNS Changer</h3>
   <p>تغییر دی ان اس آسان</p>
 </div>
 
@@ -20,7 +20,8 @@
 
 * [x] 1. change dns with bat file
 * [x] 2. read dns servers from a config file
-* [ ] 3. clear dns
+* [x] 3. flush dns
+* [ ] 4. clear dns
 
 
 <!-- Default Servers -->

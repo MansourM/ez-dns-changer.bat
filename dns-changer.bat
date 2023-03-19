@@ -57,19 +57,25 @@ goto :eof
     echo.
     setlocal enabledelayedexpansion
     FOR /L %%i IN (0 1 %x%) DO (
-    set /a index = %%i + 1
+    set /a index=%%i+1
     set "commands=!commands!!index!"
     call echo   !index!. %%Names[%%i]%%
     )
-    echo   0. clear DNS (WIP)
     echo.
-    set "commands=0%commands%"
-
+    echo   c. clear DNS (WIP)
+    echo   f. flush DNS
+    echo.
+    set "commands=%commands%cf"
+    echo %commands%
+    echo %index%
     choice /c:%commands% /M "Please choose an action: "
     echo.
 
-    if %errorlevel%==1 goto :clear-dns
-    set /a dnsindex=%errorlevel% - 2
+    set /a index+=1
+    if %errorlevel%==%index% goto :clear-dns
+    set /a index+=1
+    if %errorlevel%==%index% goto :flush-dns
+    set /a dnsindex=%errorlevel% - 1
     goto set-dns
 
 :set-dns
@@ -87,6 +93,19 @@ goto :eof
 
 :clear-dns
     echo clear-dns
+    pause
+    goto :eof
+
+:flush-dns
+    @echo off
+    echo running ipconfig /release ...
+    ipconfig /release > nul
+    echo running ipconfig /flushdns ...
+    ipconfig /flushdns > nul
+    echo ipconfig /renew ...
+    ipconfig /renew > nul
+    echo Done.
+    echo.
     pause
     goto :eof
 
