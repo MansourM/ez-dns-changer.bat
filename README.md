@@ -8,7 +8,7 @@
 
 <!-- About the Project -->
 
-## :star2: About the Project
+## :star2: درباره
 
 با توجه به شرایط فعلی یافتن دی ان اس مناسب و تغییر مداوم آن تبدیل به یکی از دغدغه های برنامه نویسان، گیمر ها و دیگر کاربران حرفه ای کشورمان شده است.
 
@@ -16,13 +16,23 @@
 
 <!-- Usage -->
 
-## :eyes: Usage
+## :eyes: نحوه استفاده
 
 برای استفاده شما به دو فایل `ez-dns-changer.bat` و `dns-servers.txt` نیاز دارید.
 
 تنها کافی است فایل `ez-dns-changer.bat` را در ویندوز باز کنید و شماره سرور مورد نظر خود را انتخاب کنید!
 
 شما همچنین میتوانید لیست سرور های موجود را در فایل `dns-servers.txt` مشاهده و ویرایش کنید.
+
+<!-- Default Servers -->
+
+## :white_check_mark: سرور های پیش فرض
+
+* [x] 1. radar.game
+* [x] 2. 403.online
+* [x] 3. shecan.ir
+* [x] 4. cloudflare
+* [x] 5. google
 
 
 <!-- Roadmap -->
@@ -33,17 +43,6 @@
 * [x] 2. read dns servers from a config file
 * [x] 3. flush dns
 * [x] 4. clear dns
-
-
-<!-- Default Servers -->
-
-## :white_check_mark: Default Servers
-
-* [x] 1. radar.game
-* [x] 2. 403.online
-* [x] 3. shecan.ir
-* [x] 4. cloudflare
-* [x] 5. google
 
 
 <!-- Known Issues -->
