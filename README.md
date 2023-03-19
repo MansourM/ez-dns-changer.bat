@@ -10,32 +10,37 @@
 
 ## :star2: About the Project
 
-با توجه به شرایط فعلی یافتن دی ان اس مناسب و تغییر آن تبدیل به یکی از دغدغه های برنامه نویسان، گیمر و دیگر کاربران حرفه ای کشورمان شده است.
+با توجه به شرایط فعلی یافتن دی ان اس مناسب و تغییر مداوم آن تبدیل به یکی از دغدغه های برنامه نویسان، گیمر ها و دیگر کاربران حرفه ای کشورمان شده است.
 
-از سویی یافتن و تغییر دستی این موضوع به راحتی امکان پذیر نبوده و از سوی دیگر استفاده از نرم افزار های معرفی شده به دلیل متن بسته بودن و شایعات حواشی آنها مورد استقبال تمامی کاربران قرار نگرفته است.
-
-**هدف این ریپو تهیه یک فایل ساده و کاملا شفاف برای تغییر دی ان اس میباشد**
+**هدف این ریپو تهیه یک فایل جامع، ساده و کاملا شفاف برای تغییر دی ان اس میباشد**
 
 <!-- Roadmap -->
 
 ## :compass: TODO / Roadmap
 
-* [x] 0. change dns with bat file
-* [x] 1. read dns servers from a config file
-* [x] 2. radar.game
-* [x] 3. 403.online
-* [x] 4. shecan.ir
+* [x] 1. change dns with bat file
+* [x] 2. read dns servers from a config file
+* [ ] 3. clear dns
+
+
+<!-- Default Servers -->
+
+## :white_check_mark: Default Servers
+
+* [x] 1. radar.game
+* [x] 2. 403.online
+* [x] 3. shecan.ir
+* [x] 4. cloudflare
 * [x] 5. google
-* [x] 6. cloudflare
-* [ ] 6. clear dns
 
 
 <!-- Known Issues -->
 
-<!--## :warning: Known Issues
+## :warning: Known Issues
 
-* issue 1
--->
+* اگر سیستم همزمان به چند شبکه اینترنت متصل باشد، ممکن است نتورک اشتباهی شناسایی شود
+* بیش از 9 سرور نمیتواند در لیست سرور ها تعریف شود
+
 <!-- Contributing -->
 
 ## :wave: Contributing
