@@ -1,5 +1,5 @@
 <div align="center">
-<img src="ez-dns-changer.png" alt="logo" width="450" height="150" />
+<img src="img/ez-dns-changer.png" alt="logo" width="450" height="150" />
   <h3>EZ DNS Changer</h3>
   <p>تغییر دی ان اس آسان</p>
 </div>
@@ -21,6 +21,10 @@
 برای استفاده شما به دو فایل `ez-dns-changer.bat` و `dns-servers.txt` نیاز دارید.
 
 تنها کافی است فایل `ez-dns-changer.bat` را در ویندوز باز کنید و شماره سرور مورد نظر خود را انتخاب کنید!
+
+<div align="center">
+<img src="img/menu.png" alt="logo"/>
+</div>
 
 شما همچنین میتوانید لیست سرور های موجود را در فایل `dns-servers.txt` مشاهده و ویرایش کنید.
 

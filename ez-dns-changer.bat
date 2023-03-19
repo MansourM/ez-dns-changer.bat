@@ -48,15 +48,15 @@ goto :eof
 ::show main menu and take action based on user input
 :show-menu
     cls
-    echo Detected network name is: %NetConnectionID%
+    echo   Detected network name is: %NetConnectionID%
     echo.
     if %x%==0 (
-        echo No Servers found check dns-servers.txt file.
+        echo   No Servers found check dns-servers.txt file.
         pause
         goto :eof
         )
     set /a x-=1
-    echo Select which DNS server you want to set (choose the number) :
+    echo   Select which DNS server you want to set (choose the number) :
     echo.
     set "commands="
     setlocal enabledelayedexpansion
@@ -89,22 +89,22 @@ goto :eof
 :: set the selected dns servers
 :set-dns
     ::setlocal enabledelayedexpansion
-    call echo Setting DNS for %%Names[%dnsindex%]%% ...
+    call echo   Setting DNS for %%Names[%dnsindex%]%% ...
     call set dns1=%%Servers1[%dnsindex%]%%
     call set dns2=%%Servers2[%dnsindex%]%%
-    echo Setting Preferred DNS Server (%dns1%)
-    echo Setting Alternate DNS Server (%dns2%)
+    echo   Setting Preferred DNS Server (%dns1%)
+    echo   Setting Alternate DNS Server (%dns2%)
     netsh interface ip set dns name="%NetConnectionID%" static %dns1%
     netsh interface ip add dns name="%NetConnectionID%" %dns2% index=2
-    echo Done.
+    echo   Done.
     pause
     goto :readfile
 
 :: unset dns server (dhcp mode)
 :clear-dns
-    echo Clearing DNS Servers...
+    echo   Clearing DNS Servers...
     netsh interface ip set dnsservers name="%NetConnectionID%" source=dhcp
-    echo Done.
+    echo   Done.
     echo.
     pause
     goto :readfile
@@ -113,13 +113,13 @@ goto :eof
 ::The “flushdns” switch will flush the DNS resolver cache.
 ::The “renew” switch will renew your IP address settings.
 :flush-dns
-    echo running ipconfig /release ...
+    echo   Running ipconfig /release ...
     ipconfig /release > nul
-    echo running ipconfig /flushdns ...
+    echo   Running ipconfig /flushdns ...
     ipconfig /flushdns > nul
-    echo ipconfig /renew ...
+    echo   Rpconfig /renew ...
     ipconfig /renew > nul
-    echo Done.
+    echo   Done.
     echo.
     pause
     goto :readfile
@@ -127,3 +127,14 @@ goto :eof
 :open-network-connections
     ncpa.cpl
     goto :readfile
+
+:print-logo
+    echo " ______ ______  _____  _   _  _____    _____ _"
+    echo "|  ____|___  / |  __ \| \ | |/ ____|  / ____| |"
+    echo "| |__     / /  | |  | |  \| | (___   | |    | |__   __ _ _ __   __ _  ___ _ __"
+    echo "|  __|   / /   | |  | | . ` |\___ \  | |    | '_ \ / _` | '_ \ / _` |/ _ \ '__|"
+    echo "| |____ / /__  | |__| | |\  |____) | | |____| | | | (_| | | | | (_| |  __/ |"
+    echo "|______/_____| |_____/|_| \_|_____/   \_____|_| |_|\__,_|_| |_|\__, |\___|_|"
+    echo "                                                                __/ |"
+    echo "                                                               |___/"
+    Exit /b
