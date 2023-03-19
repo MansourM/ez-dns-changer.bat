@@ -65,9 +65,10 @@ goto :eof
     echo.
     echo   c. clear DNS
     echo   f. flush DNS
+    echo   n. Open Network Connections
     echo   q. Quit!
     echo.
-    set "commands=%commands%cfq"
+    set "commands=%commands%cfnq"
     choice /c:%commands% /M "Please choose an action: "
     echo.
 
@@ -75,6 +76,8 @@ goto :eof
     if %errorlevel%==%index% goto :clear-dns
     set /a index+=1
     if %errorlevel%==%index% goto :flush-dns
+    set /a index+=1
+    if %errorlevel%==%index% ncpa.cpl
     set /a index+=1
     if %errorlevel%==%index% goto :eof
     set /a dnsindex=%errorlevel% - 1
