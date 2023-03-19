@@ -26,7 +26,7 @@
 
 <!-- Default Servers -->
 
-## :white_check_mark: سرور های پیش فرض
+## :white_check_mark: Default Servers
 
 * [x] 1. radar.game
 * [x] 2. 403.online
