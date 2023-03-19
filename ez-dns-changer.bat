@@ -1,3 +1,6 @@
+::repo => https://github.com/MansourM/ez-dns-changer.bat
+::author => sm.mirbehbahani@gmail.com
+
 @echo off
 
 :: Customize Window
