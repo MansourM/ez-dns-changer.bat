@@ -16,33 +16,33 @@ if _%1_==_payload_  goto :payload
     del "%temp%\getadmin.vbs"
 goto :eof
 
-:: main code
+:: this runs after program is re-run as administrator
 :payload
-    ::set NetConnectionID (network name)
-    SetLocal EnableExtensions
-    Set "Name=" & Set "NetConnectionID="
-    For /F Delims^= %%G In ('%__APPDIR__%wbem\WMIC.exe NIC Where ^
-     "Not NetConnectionStatus Is Null And NetEnabled='TRUE'" ^
-     Get Name^,NetConnectionID /Value 2^> NUL') Do Set "%%G" 2> NUL 1>&2
-    if Not Defined Name goto :eof
-    goto :readfile
+    goto :set-network-name
 
+:: fetch and set network-name, you can see your networks by typing "ncpa.cpl" in run (windows+R)
+:set-network-name
+   SetLocal EnableExtensions
+       Set "Name=" & Set "NetConnectionID="
+       For /F Delims^= %%G In ('%__APPDIR__%wbem\WMIC.exe NIC Where ^
+        "Not NetConnectionStatus Is Null And NetEnabled='TRUE'" ^
+        Get Name^,NetConnectionID /Value 2^> NUL') Do Set "%%G" 2> NUL 1>&2
+       if Not Defined Name goto :eof
+       goto :readfile
+
+::read dns servers from dns-servers.txt
 :readfile
-    ::endlocal
     set /a x = 0
     setlocal enabledelayedexpansion
     for /f "tokens=1-3 delims=," %%i in (%2dns-servers.txt) do (
-     ::call echo !x!
      set Names[!x!]=%%i
-     ::call echo Name=%%Names[!x!]%%
      set Servers1[!x!]=%%j
-     ::call echo Server1=%%Servers1[!x!]%%
      set Servers2[!x!]=%%k
-     ::call echo Server2=%%Servers2[!x!]%%
      set /a x+=1
     )
     goto :show-menu
 
+::show main menu and take action based on user input
 :show-menu
     cls
     echo Detected network name is: %NetConnectionID%
@@ -80,6 +80,7 @@ goto :eof
     set /a dnsindex=%errorlevel% - 1
     goto set-dns
 
+:: set the selected dns servers
 :set-dns
     ::setlocal enabledelayedexpansion
     call echo Setting DNS for %%Names[%dnsindex%]%% ...
@@ -93,6 +94,7 @@ goto :eof
     pause
     goto :readfile
 
+:: unset dns server (dhcp mode)
 :clear-dns
     echo Clearing DNS Servers...
     netsh interface ip set dnsservers name="%NetConnectionID%" source=dhcp
@@ -101,6 +103,9 @@ goto :eof
     pause
     goto :readfile
 
+::The “release” switch will release your current IP address settings.
+::The “flushdns” switch will flush the DNS resolver cache.
+::The “renew” switch will renew your IP address settings.
 :flush-dns
     @echo off
     echo running ipconfig /release ...
