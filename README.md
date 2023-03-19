@@ -43,6 +43,7 @@
 * [x] 2. read dns servers from a config file
 * [x] 3. flush dns
 * [x] 4. clear dns
+* [ ] 5. add the ability to ping a certain ip (input) with all of the dns servers and report the results.
 
 
 <!-- Known Issues -->
