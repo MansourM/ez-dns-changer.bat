@@ -21,7 +21,7 @@
 * [x] 1. change dns with bat file
 * [x] 2. read dns servers from a config file
 * [x] 3. flush dns
-* [ ] 4. clear dns
+* [x] 4. clear dns
 
 
 <!-- Default Servers -->

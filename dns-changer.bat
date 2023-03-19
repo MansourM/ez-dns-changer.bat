@@ -25,8 +25,6 @@ goto :eof
      "Not NetConnectionStatus Is Null And NetEnabled='TRUE'" ^
      Get Name^,NetConnectionID /Value 2^> NUL') Do Set "%%G" 2> NUL 1>&2
     if Not Defined Name goto :eof
-    echo Detected network name is: %NetConnectionID%
-    echo.
     goto :readfile
 
 :readfile
@@ -46,7 +44,9 @@ goto :eof
     goto :show-menu
 
 :show-menu
-    ::echo show-menu
+    cls
+    echo Detected network name is: %NetConnectionID%
+    echo.
     if %x%==0 (
         echo No Servers found check dns-servers.txt file.
         pause
@@ -55,6 +55,7 @@ goto :eof
     set /a x-=1
     echo Select which DNS server you want to set (choose the number) :
     echo.
+    set "commands="
     setlocal enabledelayedexpansion
     FOR /L %%i IN (0 1 %x%) DO (
     set /a index=%%i+1
@@ -62,12 +63,11 @@ goto :eof
     call echo   !index!. %%Names[%%i]%%
     )
     echo.
-    echo   c. clear DNS (WIP)
+    echo   c. clear DNS
     echo   f. flush DNS
+    echo   q. Quit!
     echo.
-    set "commands=%commands%cf"
-    echo %commands%
-    echo %index%
+    set "commands=%commands%cfq"
     choice /c:%commands% /M "Please choose an action: "
     echo.
 
@@ -75,6 +75,8 @@ goto :eof
     if %errorlevel%==%index% goto :clear-dns
     set /a index+=1
     if %errorlevel%==%index% goto :flush-dns
+    set /a index+=1
+    if %errorlevel%==%index% goto :eof
     set /a dnsindex=%errorlevel% - 1
     goto set-dns
 
@@ -89,12 +91,15 @@ goto :eof
     netsh interface ip add dns name="%NetConnectionID%" %dns2% index=2
     echo Done.
     pause
-    goto :eof
+    goto :readfile
 
 :clear-dns
-    echo clear-dns
+    echo Clearing DNS Servers...
+    netsh interface ip set dnsservers name="%NetConnectionID%" source=dhcp
+    echo Done.
+    echo.
     pause
-    goto :eof
+    goto :readfile
 
 :flush-dns
     @echo off
@@ -107,7 +112,7 @@ goto :eof
     echo Done.
     echo.
     pause
-    goto :eof
+    goto :readfile
 
 pause
 goto :eof
