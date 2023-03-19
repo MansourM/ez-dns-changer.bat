@@ -1,5 +1,5 @@
 <div align="center">
-<!--<img src="image/persian-dictionary.png" alt="logo" width="450" height="150" />-->
+<img src="ez-dns-changer.png" alt="logo" width="450" height="150" />
   <h1>EZ DNS Changer</h1>
   <p>تغییر دی ان اس آسان</p>
 </div>
