@@ -32,11 +32,11 @@
 
 ## :white_check_mark: Default Servers
 
-* [x] 1. radar.game
+* [x] 1. Radar.game
 * [x] 2. 403.online
-* [x] 3. shecan.ir
-* [x] 4. cloudflare
-* [x] 5. google
+* [x] 3. Shecan.ir
+* [x] 4. Cloudflare
+* [x] 5. Google
 
 
 <!-- Roadmap -->
@@ -71,6 +71,6 @@ sm.mirbehbahani@gmail.com
 <!-- Acknowledgments -->
 
 ## :gem: Acknowledgements
-- [shecan.ir](https://shecan.ir/)
-- [radar.game](https://radar.game/)
+- [Shecan.ir](https://shecan.ir/)
+- [Radar.game](https://radar.game/)
 - [403.online](https://403.online/)

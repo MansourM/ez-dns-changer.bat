@@ -48,6 +48,7 @@ goto :eof
 ::show main menu and take action based on user input
 :show-menu
     cls
+    call :print-logo
     echo   Detected network name is: %NetConnectionID%
     echo.
     if %x%==0 (
@@ -63,16 +64,16 @@ goto :eof
     FOR /L %%i IN (0 1 %x%) DO (
     set /a index=%%i+1
     set "commands=!commands!!index!"
-    call echo   !index!. %%Names[%%i]%%
+    call echo     !index!. %%Names[%%i]%%
     )
     echo.
-    echo   c. clear DNS
-    echo   f. flush DNS
-    echo   n. Open Network Connections
-    echo   q. Quit!
+    echo     c. Clear DNS
+    echo     f. Flush DNS
+    echo     n. Open Network Connections
+    echo     q. Quit!
     echo.
     set "commands=%commands%cfnq"
-    choice /c:%commands% /M "Please choose an action: "
+    choice /c:%commands% /M "` Please choose an action: "
     echo.
 
     set /a index+=1
@@ -128,13 +129,14 @@ goto :eof
     ncpa.cpl
     goto :readfile
 
+::make you own at https://patorjk.com/software/taag
 :print-logo
-    echo " ______ ______  _____  _   _  _____    _____ _"
-    echo "|  ____|___  / |  __ \| \ | |/ ____|  / ____| |"
-    echo "| |__     / /  | |  | |  \| | (___   | |    | |__   __ _ _ __   __ _  ___ _ __"
-    echo "|  __|   / /   | |  | | . ` |\___ \  | |    | '_ \ / _` | '_ \ / _` |/ _ \ '__|"
-    echo "| |____ / /__  | |__| | |\  |____) | | |____| | | | (_| | | | | (_| |  __/ |"
-    echo "|______/_____| |_____/|_| \_|_____/   \_____|_| |_|\__,_|_| |_|\__, |\___|_|"
-    echo "                                                                __/ |"
-    echo "                                                               |___/"
+    echo   ______ ______  _____  _   _  _____    _____ _
+    echo  ^|  ____^|___  / ^|  __ \^| \ ^| ^|/ ____^|  / ____^| ^|
+    echo  ^| ^|__     / /  ^| ^|  ^| ^|  \^| ^| (___   ^| ^|    ^| ^|__   __ _ _ __   __ _  ___ _ __
+    echo  ^|  __^|   / /   ^| ^|  ^| ^| . ` ^|\___ \  ^| ^|    ^| '_ \ / _` ^| '_ \ / _` ^|/ _ \ '__^|
+    echo  ^| ^|____ / /__  ^| ^|__^| ^| ^|\  ^|____) ^| ^| ^|____^| ^| ^| ^| (_^| ^| ^| ^| ^| (_^| ^|  __/ ^|
+    echo  ^|______/_____^| ^|_____/^|_^| \_^|_____/   \_____^|_^| ^|_^|\__,_^|_^| ^|_^|\__, ^|\___^|_^|
+    echo                                                                  __/ ^|
+    echo                                                                 ^|___/
     Exit /b
