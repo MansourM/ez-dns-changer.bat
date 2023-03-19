@@ -61,8 +61,7 @@ Contributions are always welcome!
 <!-- Contact -->
 
 ## :handshake: Contact
-
-سیدمنصور میربهبهانی - sm.mirbehbahani@gmail.com
+sm.mirbehbahani@gmail.com
 
 <!-- Acknowledgments -->
 
