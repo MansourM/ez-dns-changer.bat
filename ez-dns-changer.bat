@@ -23,7 +23,7 @@ goto :eof
 :payload
     goto :set-network-name
 
-:: fetch and set network-name, you can see your networks by typing "ncpa.cpl" in run (windows+R)
+:: fetch and set network-name
 :set-network-name
    SetLocal EnableExtensions
        Set "Name=" & Set "NetConnectionID="
@@ -80,7 +80,7 @@ goto :eof
     set /a index+=1
     if %errorlevel%==%index% goto :flush-dns
     set /a index+=1
-    if %errorlevel%==%index% ncpa.cpl
+    if %errorlevel%==%index% goto :open-network-connections
     set /a index+=1
     if %errorlevel%==%index% goto :eof
     set /a dnsindex=%errorlevel% - 1
@@ -113,7 +113,6 @@ goto :eof
 ::The “flushdns” switch will flush the DNS resolver cache.
 ::The “renew” switch will renew your IP address settings.
 :flush-dns
-    @echo off
     echo running ipconfig /release ...
     ipconfig /release > nul
     echo running ipconfig /flushdns ...
@@ -125,5 +124,6 @@ goto :eof
     pause
     goto :readfile
 
-pause
-goto :eof
+:open-network-connections
+    ncpa.cpl
+    goto :readfile
