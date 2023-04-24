@@ -129,7 +129,7 @@ goto :eof
     ncpa.cpl
     goto :readfile
 
-::make you own at https://patorjk.com/software/taag
+::make your own at https://patorjk.com/software/taag
 :print-logo
     echo   ______ ______  _____  _   _  _____    _____ _
     echo  ^|  ____^|___  / ^|  __ \^| \ ^| ^|/ ____^|  / ____^| ^|
